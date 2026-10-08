@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "backend"
+		},
+		{
+			"path": "frontend/admin-end"
+		},
+		{
+			"path": "frontend/cs-end"
+		},
+		{
+			"path": "frontend/user-end"
+		},
+		{
+			"path": "ai"
+		}
+	],
+	"settings": {}
+}

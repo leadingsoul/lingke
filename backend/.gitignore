@@ -1,0 +1,48 @@
+# 依赖
+.env
+*.env
+
+# 虚拟环境
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# 编译产物
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# 数据库
+*.db
+*.sqlite3
+mysql_data/
+
+# 上传文件
+uploads/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 大型文件
+*.pkl
+*.h5
+*.bin
+*.pt
+*.weights
+
+# Jupyter
+.ipynb_checkpoints/
