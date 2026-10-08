@@ -1,8 +1,8 @@
-# group22-ai — 电商售后客服与用户评价分析系统（AI 引擎）
+# ai — 电商售后客服与用户评价分析系统（AI 引擎）
 
 ## 项目简介
 
-本仓库为"电商售后客服与用户评价分析系统"的 **AI 引擎层**，包含 8 大 AI 能力模块。以 Python 包形式发布，被 `group22-backend` 通过 pip git 方式安装引用。
+本仓库为"电商售后客服与用户评价分析系统"的 **AI 引擎层**，包含 8 大 AI 能力模块。以 Python 包形式发布，被 `backend` 通过 pip git 方式安装引用。
 
 ## 技术栈
 
@@ -31,11 +31,8 @@
 
 ```bash
 # 作为独立包安装（开发调试）
+cd ai_engine
 pip install -e .
-
-# 在 group22-backend 中引用
-# requirements.txt:
-# git+https://github.com/Daymoonlight-P/group22-ai.git@main
 ```
 
 ## 使用示例
@@ -56,7 +53,7 @@ result = await intent_engine.classify("我的订单什么时候发货？")
 ## 目录结构
 
 ```
-group22-ai/
+ai/
 ├── README.md
 ├── .gitignore
 ├── setup.py                    # Python 包配置
