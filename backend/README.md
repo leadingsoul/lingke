@@ -1,4 +1,4 @@
-# group22-backend — 电商售后客服与用户评价分析系统（后端）
+# backend — 电商售后客服与用户评价分析系统（后端）
 
 ## 项目简介
 
@@ -28,8 +28,8 @@
 
 ```bash
 # 1. 克隆仓库
-git clone https://github.com/Daymoonlight-P/group22-backend.git
-cd group22-backend
+git clone https://github.com/leadingsoul/lingke.git
+cd backend
 
 # 2. 创建虚拟环境
 python -m venv .venv
@@ -56,7 +56,7 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ## 目录结构
 
 ```
-group22-backend/
+backend/
 ├── README.md
 ├── .gitignore
 ├── .env.example               # 环境变量模板
