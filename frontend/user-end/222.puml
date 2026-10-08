@@ -1,0 +1,65 @@
+@startuml 系统分层逻辑架构图
+  skinparam backgroundColor #FFFFFF
+  skinparam componentStyle rectangle
+  skinparam packageStyle rectangle
+  title 电商售后客服与用户评价分析系统\n平台逻辑架构设计图
+
+  package "表示层 (Presentation)" as presentation_layer #E3F2FD {
+      package "消费者H5端\n(Vite + TS + Vant 4)" as h5_frontend #BBDEFB {
+          [订单列表/订单查询/售后申请]
+          [评价提交/追评管理]
+      }
+      package "客服端 SPA\n(Vite + React 18 + Ant Design 5)" as cs_frontend #BBDEFB {
+          [工作台/会话处理/工单处理]
+          [售后分类/绩效统计]
+      }
+      package "管理端 SPA\n(Vite + React 18 + Ant Design 5)" as admin_frontend #BBDEFB {
+          [系统概览/知识库/规则配置]
+          [AI配置/爬虫/对策库/进化]
+      }
+  }
+
+  package "业务逻辑层 (Business Logic)\nPython 3.11+ / FastAPI" as business_layer #FFF3E0 {
+      [消费者模块\n/api/consumer/] as api_consumer #FFE0B2
+      [客服模块\n/api/cs/] as api_cs #FFE0B2
+      [管理模块\n/api/admin/] as api_admin #FFE0B2
+      [认证模块\n/api/auth/] as api_auth #FFE0B2
+  }
+
+  package "AI引擎层 (AI Engine)\nLangChain + LLM API" as ai_layer #F3E5F5 {
+      [LLM API 网关\n(DeepSeek / 通义千问)] #E1BEE7
+      [意图识别引擎\n(IntentEngine)] #E1BEE7
+      [RAG 检索生成引擎\n(RAGEngine)] #E1BEE7
+      [情感分析引擎\n(SentimentEngine)] #E1BEE7
+      [主题归类引擎\n(ThemeEngine)] #E1BEE7
+      [自进化引擎\n(EvolutionEngine)] #E1BEE7
+  }
+
+  package "数据层 (Data Layer)" as data_layer #ECEFF1 {
+      database "MySQL 8.0\n(业务数据存储)" as mysql #CFD8DC
+      database "Redis 7.0\n(缓存 / Session)" as redis #CFD8DC
+  }
+
+  ' === 层间调用关系 ===
+  presentation_layer --> business_layer : "HTTP RESTful API\nWebSocket 实时推送"
+  business_layer --> ai_layer : "内部函数调用"
+  business_layer --> data_layer : "SQLAlchemy 2.0 ORM"
+  ai_layer --> data_layer : "读写知识库 / 缓存"
+
+  ' === WebSocket 说明 ===
+  note right of presentation_layer
+    <b>前后端通讯规则</b>
+    • Axios 封装 HTTP 请求
+    • WebSocket 推送实时消息
+    • JWT Bearer Token 鉴权
+    • Refresh Token 自动续期
+  end note
+
+  ' === AI 引擎说明 ===
+  note right of ai_layer
+    <b>AI 引擎不对外暴露 HTTP 端口</b>
+    仅供 Service 层通过
+    Python 函数调用
+  end note
+
+  @enduml

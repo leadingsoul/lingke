@@ -1,0 +1,285 @@
+/* ═══════════════════════════════════════════════════
+   CS-END — Editorial Luxury 设计系统 v2
+   设计参考: Apple/Linear/Hermès
+   品牌色: teal #0D9488 / blue #2563EB
+   ═══════════════════════════════════════════════════ */
+
+/* ── CSS Variables ── */
+:root {
+  --primary: #0D9488;
+  --primary-light: rgba(13,148,136,0.12);
+  --brand-gradient: linear-gradient(135deg, #0D9488, #2563EB);
+  --bg-page: #FDFBF7;
+  --text: #1a1a1a;
+  --text-secondary: rgba(0,0,0,0.55);
+  --text-tertiary: rgba(0,0,0,0.30);
+  --border: rgba(0,0,0,0.08);
+  --border-light: rgba(0,0,0,0.04);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-pill: 9999px;
+}
+
+/* ── Reset ── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body, #root { height: 100%; font-family: "Plus Jakarta Sans", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.22); }
+
+/* ═══════════════════════════════════════════════════
+   ANT DESIGN GLOBAL OVERRIDES — 22 Components
+   ═══════════════════════════════════════════════════ */
+
+/* 1. Layout */
+.ant-layout { background: var(--bg-page) !important; }
+.ant-layout-sider {
+  background: linear-gradient(180deg, #0F2F2B 0%, #0A2522 100%) !important;
+}
+
+/* 2. Sider trigger */
+.ant-layout-sider-trigger {
+  background: rgba(0,0,0,0.25) !important;
+}
+
+/* 3. Menu */
+.ant-menu-dark {
+  background: transparent !important;
+}
+.ant-menu-dark .ant-menu-item-selected {
+  background: rgba(255,255,255,0.12) !important;
+}
+.ant-menu-dark .ant-menu-item:hover {
+  background: rgba(255,255,255,0.06) !important;
+}
+.ant-menu-dark .ant-menu-submenu-selected > .ant-menu-submenu-title {
+  color: #fff !important;
+}
+.ant-menu-inline-collapsed .ant-menu-item { padding-inline: calc(50% - 16px) !important; }
+
+/* 4. Header */
+.ant-layout-header {
+  background: rgba(255,255,255,0.85) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-light);
+  height: 56px !important;
+  line-height: 56px !important;
+}
+
+/* 5. Content */
+.ant-layout-content {
+  margin: 20px !important;
+  padding: 28px !important;
+  background: #fff !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  min-height: 280px !important;
+}
+
+/* 6. Card */
+.ant-card {
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid var(--border-light) !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03) !important;
+  transition: box-shadow 0.3s cubic-bezier(0.32,0.72,0,1);
+}
+.ant-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06) !important; }
+.ant-card-bordered { border-color: var(--border-light) !important; }
+.ant-card-head {
+  border-bottom: 1px solid var(--border-light) !important;
+  font-weight: 600 !important;
+}
+.ant-card-body { padding: 20px !important; }
+
+/* 7. Button */
+.ant-btn {
+  border-radius: var(--radius-pill) !important;
+  font-weight: 500 !important;
+  transition: all 0.3s cubic-bezier(0.32,0.72,0,1) !important;
+}
+.ant-btn:active { transform: scale(0.97); }
+.ant-btn-primary {
+  background: var(--brand-gradient) !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(13,148,136,0.25) !important;
+  color: #fff !important;
+}
+.ant-btn-primary:hover { box-shadow: 0 4px 16px rgba(13,148,136,0.35) !important; opacity: 0.92; }
+.ant-btn-primary:disabled { opacity: 0.45; box-shadow: none !important; }
+.ant-btn-link { color: var(--primary) !important; }
+.ant-btn-text:hover { background: rgba(13,148,136,0.06) !important; color: var(--primary) !important; }
+
+/* 8. Table */
+.ant-table-wrapper {
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid var(--border-light) !important;
+  overflow: hidden;
+}
+.ant-table-thead > tr > th {
+  background: rgba(0,0,0,0.02) !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  color: var(--text-tertiary) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  border-bottom: 1px solid var(--border-light) !important;
+}
+.ant-table-tbody > tr > td {
+  border-bottom: 1px solid var(--border-light) !important;
+}
+.ant-table-tbody > tr:hover > td {
+  background: rgba(13,148,136,0.03) !important;
+}
+.ant-table-pagination { padding: 12px 16px !important; }
+
+/* 9. Tabs */
+.ant-tabs-nav { margin-bottom: 20px !important; }
+.ant-tabs-nav::before { border-bottom-color: var(--border-light) !important; }
+.ant-tabs-tab { font-weight: 500 !important; transition: color 0.3s ease; }
+.ant-tabs-ink-bar { background: var(--brand-gradient) !important; height: 3px !important; border-radius: 2px; }
+
+/* 10. Tag */
+.ant-tag {
+  border-radius: var(--radius-sm) !important;
+  font-weight: 500 !important;
+  border: none !important;
+  padding: 2px 10px !important;
+  font-size: 12px !important;
+}
+.ant-tag-blue { background: rgba(13,148,136,0.1) !important; color: var(--primary) !important; }
+.ant-tag-green { background: rgba(22,163,74,0.1) !important; color: #16A34A !important; }
+.ant-tag-orange, .ant-tag-gold { background: rgba(234,88,12,0.1) !important; color: #EA580C !important; }
+.ant-tag-red { background: rgba(220,38,38,0.1) !important; color: #DC2626 !important; }
+.ant-tag-default { background: rgba(0,0,0,0.05) !important; color: var(--text-secondary) !important; }
+
+/* 11. Modal */
+.ant-modal-content {
+  border-radius: var(--radius-xl) !important;
+  overflow: hidden;
+}
+.ant-modal-header {
+  border-bottom: 1px solid var(--border-light) !important;
+  padding: 20px 24px 16px !important;
+}
+.ant-modal-title { font-weight: 700 !important; }
+.ant-modal-body { padding: 24px !important; }
+.ant-modal-footer {
+  border-top: 1px solid var(--border-light) !important;
+  padding: 14px 24px !important;
+}
+
+/* 12. Drawer */
+.ant-drawer-content { border-radius: var(--radius-xl) 0 0 var(--radius-xl) !important; }
+
+/* 13. Input / Select / DatePicker */
+.ant-input, .ant-input-affix-wrapper, .ant-picker {
+  border-radius: var(--radius-md) !important;
+  border-color: var(--border) !important;
+  transition: all 0.3s ease !important;
+}
+.ant-input:focus, .ant-input-affix-wrapper:focus, .ant-input-affix-wrapper-focused,
+.ant-picker-focused, .ant-select-focused .ant-select-selector {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px rgba(13,148,136,0.08) !important;
+}
+.ant-select-selector {
+  border-radius: var(--radius-md) !important;
+  border-color: var(--border) !important;
+}
+.ant-select-dropdown { border-radius: var(--radius-md) !important; }
+
+/* 14. Form */
+.ant-form-item-label > label { font-weight: 500 !important; font-size: 13px !important; }
+
+/* 15. Spin */
+.ant-spin-dot-item { background: var(--primary) !important; }
+
+/* 16. Badge */
+.ant-badge-status-processing { background: var(--primary) !important; }
+
+/* 17. Popconfirm */
+.ant-popconfirm .ant-popconfirm-buttons .ant-btn-primary {
+  background: var(--red) !important;
+  box-shadow: none !important;
+}
+
+/* 18. Statistic */
+.ant-statistic-title { font-weight: 500 !important; color: var(--text-secondary) !important; }
+
+/* 19. Alert */
+.ant-alert {
+  border-radius: var(--radius-md) !important;
+  border: none !important;
+}
+
+/* 20. Progress */
+.ant-progress-bg { background: var(--brand-gradient) !important; }
+
+/* 21. Upload */
+.ant-upload-select { border-radius: var(--radius-md) !important; }
+
+/* 22. Descriptions */
+.ant-descriptions-bordered .ant-descriptions-item-label {
+  background: rgba(0,0,0,0.015) !important;
+  font-weight: 500 !important;
+}
+.ant-descriptions-bordered { border-radius: var(--radius-md) !important; overflow: hidden; }
+
+/* ═══════════════════════════════════════════════════
+   CHAT BUBBLE STYLES
+   ═══════════════════════════════════════════════════ */
+
+.chat-message { margin-bottom: 16px; display: flex; flex-direction: column; }
+.chat-message.system { align-items: center; }
+.chat-message.consumer { align-items: flex-start; }
+.chat-message.staff, .chat-message.ai { align-items: flex-end; }
+
+.chat-bubble {
+  max-width: 70%; padding: 10px 16px; border-radius: 12px;
+  word-break: break-word; line-height: 1.6;
+}
+.chat-bubble.system-bubble {
+  background: rgba(0,0,0,0.04); color: var(--text-secondary);
+  font-size: 12px; max-width: 90%;
+}
+.chat-bubble.consumer-bubble {
+  background: #fff; border: 1px solid var(--border); color: var(--text);
+}
+.chat-bubble.staff-bubble {
+  background: var(--brand-gradient); color: #fff;
+}
+.chat-bubble.ai-bubble {
+  background: rgba(13,148,136,0.06); border: 1px solid rgba(13,148,136,0.12); color: var(--text);
+}
+
+/* Markdown inside bubbles */
+.chat-bubble p { margin: 0 0 4px 0; }
+.chat-bubble p:last-child { margin-bottom: 0; }
+.chat-bubble strong { font-weight: 600; }
+.chat-bubble em { font-style: italic; }
+.chat-bubble ul, .chat-bubble ol { margin: 4px 0; padding-left: 20px; }
+.chat-bubble li { margin-bottom: 2px; }
+.chat-bubble a { color: var(--primary); text-decoration: underline; }
+.chat-bubble code { background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px; font-size: 0.9em; }
+.chat-bubble blockquote { border-left: 3px solid var(--border); margin: 4px 0; padding-left: 12px; color: var(--text-secondary); }
+
+.chat-bubble.staff-bubble strong, .chat-bubble.staff-bubble em,
+.chat-bubble.staff-bubble li, .chat-bubble.staff-bubble p { color: #fff; }
+.chat-bubble.staff-bubble a { color: #ffd666; }
+
+.chat-sender { font-size: 12px; color: var(--text-tertiary); margin-bottom: 4px; }
+
+/* ═══════════════════════════════════════════════════
+   UTILITY
+   ═══════════════════════════════════════════════════ */
+
+.stat-card { text-align: center; }
+.stat-card .ant-statistic-title { font-size: 14px; }
+.ticket-detail-section { margin-bottom: 24px; }
