@@ -98,20 +98,20 @@
 ### 后端 + AI 引擎
 
 ```bash
-cd group22-backend
+cd backend
 python -m venv .venv
 .venv\Scripts\activate      # Windows
 pip install -r requirements.txt
 
 # AI 引擎安装为可编辑包（如单独使用）
-cd ../group22-ai
+cd ../ai/ai_engine
 pip install -e .
 ```
 
 ### 前端
 
 ```bash
-cd group22-frontend/user-end   # 消费者端
+cd frontend/user-end   # 消费者端
 npm install
 npm run dev                    # → http://localhost:5173
 
